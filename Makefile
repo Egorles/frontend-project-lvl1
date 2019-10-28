@@ -5,4 +5,4 @@ start:
 publish:
 	--dry-run
 lint: 
-	npx eslint .
+	npx eslint src/bin/brain-games.js
