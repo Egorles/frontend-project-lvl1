@@ -2,6 +2,7 @@
 
 import readlineSync from 'readline-sync';
 import game from '../src/index.js';
+import { generateNum } from '../utils/gameUtils.js';
 
 const rules = 'What is the result of the expression?';
 const operators = ['+', '-', '*'];
@@ -15,8 +16,8 @@ const getCorrectAnswer = (num1, num2, operator) => {
 };
 
 const roundGenerator = () => {
-  const num1 = Math.floor(Math.random() * 10);
-  const num2 = Math.floor(Math.random() * 10);
+  const num1 = generateNum();
+  const num2 = generateNum();
   const operator = operators[Math.floor(Math.random() * 2)];
   const correctAnswer = getCorrectAnswer(num1, num2, operator).toString();
 
