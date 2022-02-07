@@ -2,7 +2,7 @@
 
 import readlineSync from 'readline-sync';
 import game from '../src/index.js';
-import generateNum from '../utils/gameUtils.js';
+import { generateNum } from '../utils/gameUtils.js';
 
 const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
 const isEven = (num) => num % 2 === 0;

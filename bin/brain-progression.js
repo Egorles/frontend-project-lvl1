@@ -16,10 +16,11 @@ const roundGenerator = () => {
   const randomIndex = generateNum(9, 0);
   const question = progression.reduce((prev, current, index) => {
     if (index === randomIndex) {
-      return `${prev} ...`;
+      return `${prev} ..`;
     }
     return `${prev} ${current}`;
   });
+  console.log(question);
   const correctAnswer = progression[randomIndex].toString();
 
   const answer = readlineSync.question(`Question: ${question} \nYour answer: `);
