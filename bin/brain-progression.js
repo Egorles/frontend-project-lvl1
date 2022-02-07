@@ -13,14 +13,13 @@ const getRandomProgression = () => {
 
 const roundGenerator = () => {
   const progression = getRandomProgression();
-  const randomIndex = generateNum(9, 0);
+  const randomIndex = generateNum(9, 1);
   const question = progression.reduce((prev, current, index) => {
     if (index === randomIndex) {
       return `${prev} ..`;
     }
     return `${prev} ${current}`;
   });
-  console.log(question);
   const correctAnswer = progression[randomIndex].toString();
 
   const answer = readlineSync.question(`Question: ${question} \nYour answer: `);
