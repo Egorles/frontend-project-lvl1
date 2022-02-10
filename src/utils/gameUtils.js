@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
-export const generateNum = (end = 100, start = 1) => Math.floor(Math.random() * end) + start;
+/* eslint-disable max-len */
+export default (min = 1, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);

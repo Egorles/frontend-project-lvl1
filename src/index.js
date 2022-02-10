@@ -1,6 +1,8 @@
 import readlineSync from 'readline-sync';
 
-export default (roundGenerator, rules) => {
+const NUMBER_OF_ROUNDS = 3;
+
+export default (generateRound, rules) => {
   console.log('Welcome to the Brain Games!');
 
   const name = readlineSync.question('May I have your name? ');
@@ -8,14 +10,18 @@ export default (roundGenerator, rules) => {
 
   console.log(rules);
 
-  for (let round = 1; round <= 3; round += 1) {
-    const result = roundGenerator(name);
+  for (let i = 0; i < NUMBER_OF_ROUNDS; i += 1) {
+    const { question, correctAnswer } = generateRound();
 
-    if (!result) {
-      console.log(`Let's try again, ${name}!`);
-      return false;
+    const answer = readlineSync.question(question);
+
+    if (answer === correctAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${name}!`);
+      return;
     }
   }
+
   console.log(`Congratulations, ${name}!`);
-  return true;
 };

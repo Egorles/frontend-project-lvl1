@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync';
-import { generateNum } from '../utils/gameUtils.js';
+import generateNum from '../utils/gameUtils.js';
+import game from '../index.js';
 
-export const rules = 'Find the greatest common divisor of given numbers.';
+const rules = 'Find the greatest common divisor of given numbers.';
 const getCorrectAnswer = (num1, num2) => {
   let a = num1;
   let b = num2;
@@ -16,20 +16,14 @@ const getCorrectAnswer = (num1, num2) => {
   return a.toString();
 };
 
-const roundGenerator = () => {
+const generateRound = () => {
   const randomNumber1 = generateNum();
   const randomNumber2 = generateNum();
+
   const correctAnswer = getCorrectAnswer(randomNumber1, randomNumber2);
+  const question = `Question: ${randomNumber1} ${randomNumber2} \nYour answer: `;
 
-  const answer = readlineSync.question(`Question: ${randomNumber1} ${randomNumber2} \nYour answer: `);
-
-  if (answer === correctAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-
-  console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-  return false;
+  return { question, correctAnswer };
 };
 
-export default roundGenerator;
+export default () => game(generateRound, rules);

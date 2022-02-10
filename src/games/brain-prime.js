@@ -1,8 +1,8 @@
 /* eslint-disable no-plusplus */
-import readlineSync from 'readline-sync';
-import { generateNum } from '../utils/gameUtils.js';
+import generateNum from '../utils/gameUtils.js';
+import game from '../index.js';
 
-export const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const checkIsPrime = (num) => {
   if (num === 1) {
     return false;
@@ -18,20 +18,13 @@ const checkIsPrime = (num) => {
   return true;
 };
 
-const roundGenerator = () => {
-  const randomNumber = generateNum(10000);
+const generateRound = () => {
+  const randomNumber = generateNum(1, 10000);
 
   const correctAnswer = checkIsPrime(randomNumber) ? 'yes' : 'no';
+  const question = `Question: ${randomNumber} \nYour answer: `;
 
-  const answer = readlineSync.question(`Question: ${randomNumber} \nYour answer: `);
-
-  if (answer === correctAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-
-  console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-  return false;
+  return { question, correctAnswer };
 };
 
-export default roundGenerator;
+export default () => game(generateRound, rules);
