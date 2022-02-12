@@ -4,10 +4,8 @@
 ![Nodejs CI workflow](https://github.com/Egorles/frontend-project-lvl1//actions/workflows/nodejs.yml/badge.svg)
 
 ### Установка:
-Установите пакет в систему с помощью npm link. Команда npm link может потребовать запуск с sudo.
-```sh
-npm link
-```
+1. Установите зависимости с помощью команды `make install`;
+2. Установите пакет в систему с помощью `npm link`. Команда npm link может потребовать запуск с sudo.
 
 ### Игры:
 - **Проверка на чётность**: пользователю показывается случайное число. И ему нужно ответить yes, если число чётное, или no — если нечётное. `brain-even`
