@@ -3,28 +3,22 @@ import play from '../index.js';
 
 const rules = 'Find the greatest common divisor of given numbers.';
 
-const getCorrectAnswer = (num1, num2) => {
-  let a = num1;
-  let b = num2;
-
-  while (a !== b) {
-    if (a > b) {
-      a -= b;
-    } else {
-      b -= a;
-    }
+const findGCD = (num1, num2) => {
+  if (num2 === 0) {
+    return num1;
   }
-  return a;
+
+  return findGCD(num2, num1 % num2);
 };
 
 const generateRound = () => {
   const randomNumber1 = generateNum();
   const randomNumber2 = generateNum();
 
-  const correctAnswer = getCorrectAnswer(randomNumber1, randomNumber2).toString();
+  const correctAnswer = findGCD(randomNumber1, randomNumber2).toString();
   const question = `${randomNumber1} ${randomNumber2}`;
 
-  return { question, correctAnswer };
+  return [question, correctAnswer];
 };
 
 export default () => play(generateRound, rules);

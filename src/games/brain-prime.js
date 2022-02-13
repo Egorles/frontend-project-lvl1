@@ -25,9 +25,9 @@ const generateRound = () => {
   const randomNumber = generateNum(1, 10000);
 
   const correctAnswer = checkIsPrime(randomNumber) ? 'yes' : 'no';
-  const question = `${randomNumber}`;
+  const question = String(randomNumber);
 
-  return { question, correctAnswer };
+  return [question, correctAnswer];
 };
 
 export default () => play(generateRound, rules);

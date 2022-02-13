@@ -9,9 +9,9 @@ const generateRound = () => {
   const randomNumber = generateNum();
 
   const correctAnswer = isEven(randomNumber) ? 'yes' : 'no';
-  const question = `${randomNumber}`;
+  const question = String(randomNumber);
 
-  return { question, correctAnswer };
+  return [question, correctAnswer];
 };
 
 export default () => play(generateRound, rules);

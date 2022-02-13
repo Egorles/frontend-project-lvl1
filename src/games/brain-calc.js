@@ -10,8 +10,10 @@ const getCorrectAnswer = (num1, num2, operator) => {
       return num1 + num2;
     case '-':
       return num1 - num2;
-    default:
+    case '*':
       return num1 * num2;
+    default:
+      throw new Error(`operation ${operator} is not supported`);
   }
 };
 
@@ -23,7 +25,7 @@ const generateRound = () => {
   const correctAnswer = getCorrectAnswer(num1, num2, operator).toString();
   const question = `${num1} ${operator} ${num2}`;
 
-  return { question, correctAnswer };
+  return [question, correctAnswer];
 };
 
 export default () => play(generateRound, rules);
